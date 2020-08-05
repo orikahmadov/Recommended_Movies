@@ -64,9 +64,34 @@ def sorted_recommendations(list_of_titles):
     movies_and_scores = dict(zip(related_movies,scores))
     sorted_movies = sorted(movies_and_scores.items(), key= lambda movie : movie[1], reverse=True)
     result = [(movie,score) for (movie,score) in sorted(movies_and_scores.items(), key = lambda x : x[1],reverse=True) ]
-    print(result)
+    return result
 
-sorted_recommendations(["Titanic"])
+def writeMoviestoFile():
+   import time
+   finished =  False
+   while not finished:
+       askForMovie = input("Please enter at least 2 movie names  and separate them with space: ")
+       print("\n")
+       finished =  False
+       found_movies = []
+       movies_separated =  askForMovie.split()
+       if not askForMovie:
+           print("No movie name is given ")
+           finished =  False
+       else:
+           for movie in sorted_recommendations(movies_separated):
+               print(movie)
+               found_movies.append(movie)
+               finished = True
+
+   else:
+       print("\n")
+       print("All movies are listed")
+       with open("movies.txt", "w")  as file:
+           file.writelines(str(found_movies))
+           file.write("\n")
+
+writeMoviestoFile()
 
 
 #I have written all these scripts by mysels Coursera has motivated me to do this project
