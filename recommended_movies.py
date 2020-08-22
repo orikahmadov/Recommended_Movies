@@ -3,7 +3,7 @@ import requests
 
 #This function is taking a movie name as its parameters and sends the request to the api and
 # returns 5 movies and stores them in movies variable
-def get_movies_from_tastedive(movie_name,api_key =  "381035-FuncApp-4WBWDQGH"):
+def get_movies_from_tastedive(movie_name,api_key =  "[Your Api KEY]"):
     parameters = {"q": movie_name, "type": "movies", "limit": 5, "k" : api_key}
     result = requests.get("https://tastedive.com/api/similar", params=parameters).json()
     movies = result
@@ -33,7 +33,7 @@ def get_related_titles(list_of_movie_title):
 #returns json
 def get_movie_data(movie_name):
     parameters = {'t': movie_name, 'r': 'json'}
-    api_result_omdp = requests.get('http://www.omdbapi.com/?i=tt3896198&apikey=7e00306d', params=parameters).json()
+    api_result_omdp = requests.get('http://www.omdbapi.com/?i=[Your Api KEY]', params=parameters).json()
     res = api_result_omdp
     return res
 
